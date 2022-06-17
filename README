@@ -1,0 +1,8 @@
+# minhtml is a minifier for html files written in C.
+# It removes all tabs, newlines and comments.
+
+Usage: minhtml  <input-file> [<out-dir>[/<out-filename>]]
+
+	Minifies <input-file> and writes results into stdout or <out-dir>
+
+# Note: it will break <pre>formatted text
