@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		infilename = argv[1];
 	}
 
-	// Open inpput file
+	// Open input file
 	FILE *inptr = fopen(argv[1], "r");
 	if (inptr == NULL)
 	{
@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
 
 
 
-// Slash finder function - returns pointer to last slash on filepath
+// Slash finder function - returns pointer to last slash on a string
 char *fslash(char *fpath)
 {
 	// Find a slash
@@ -131,7 +131,7 @@ char *ofname(char *path, char *infilename, bool *f)
 	if (outslash != NULL)
 	{
 		// And there is a string after the last slash
-		if (fnmatch("?*", outslash, 0) == 0)
+		if (*(outslash + 1) != '\0')
 		{
 			return path;
 		}
@@ -140,6 +140,7 @@ char *ofname(char *path, char *infilename, bool *f)
 			// Concat out file path and in file name
 			char *outfilename = malloc(strlen(path) + strlen(infilename) + 1);
 			*f = true;
+			strcat(outfilename, path);
 			return strcat(outfilename, infilename);
 		}
 	}
